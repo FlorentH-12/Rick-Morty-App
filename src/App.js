@@ -1,14 +1,17 @@
-import React from 'react';
-// import './styles/main.css'
-import  { BrowserRouter as Router, Route, Link, Switch, NavLink } from 'react-router-dom';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import  { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Navbar  from './Components/Navigation';
+import './styles/App.css';
+import { Character_API } from './api/api';
+import Nobody from './Components/Nobody';
+import characterDetails from './pages/character';
 
 function App() {
   return (
     <Router>
       <Navbar/>
       <Switch>
-        <Route path="/character" component={Character} />
+        <Route path="/character/:id" component={characterDetails} />
         <Route path="/location" component={Location} />
         <Route path="/episode" component={Episode} />
         <Route path="/" component={Home} />
@@ -17,45 +20,43 @@ function App() {
   );
 }
 
-function Navbar() {
-  return(
-    <nav className="black">
-      <ul>
-        <li className="yellow">
-          <NavLink exact to="/">Home</NavLink>
-        </li> 
-        <li className="yellow">
-          <NavLink to="/location">Location</NavLink>
-        </li>
-        <li className="yellow">
-          <NavLink to="/episode">Episode</NavLink>
-        </li>
-      </ul>
-    </nav>
-  );
-}
+function Home(props) {
 
-function Home() {
+  let [characters, setCharacters] = useState(null);
+
+  useEffect (() => {
+    try{
+    fetch(Character_API)
+      .then(res =>res.json())
+      .then(({results}) => {
+        if(results && Array.isArray(results)){
+          setCharacters(results)
+        }
+      })
+      .catch(err => console.log(err))
+    }catch(e){
+      console.log(e)
+    }
+
+  }, []);
+
+  if(!characters){
+    return <Nobody/>
+  }
+
   return(
-    <div>
-      <h2>Home</h2>
-      <Link to="/component1">Component1</Link>
-      <Link to="/component2">Component2</Link>
-      <Route path='/component1' component={Component1}/>
-      <Route path='/component2' component={Component2}/>
+    <div className="container home">
+      <h2>Rick and Morty App</h2>
+      <div className="row">
+        {characters.map(character => {
+          return(
+            <div className="col s12 m4 l3" key={character.id}>
+              <Character key={character.id} character={character}/>
+            </div>
+          )
+        })}
+      </div>
     </div>
-  );
-}
-
-function Component1() {
-  return(
-    <h2>Component 1</h2>
-  );
-}
-
-function Component2() {
-  return(
-    <h2>Component 2</h2>
   );
 }
 
