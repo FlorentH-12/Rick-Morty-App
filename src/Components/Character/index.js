@@ -1,13 +1,13 @@
 import React from 'react';
-import { useHistory, useRouteMatch } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
-function Character( {character} ) {
+function Char( {character} ) {
 
-    let {name, image, id} = character;
+    let {name, image} = character;
     let history = useHistory();
-    let {url} = useRouteMatch();
     return (
-        <div className="card black character" onClick={() => history.push(`${url}/${id}`)}>
+        <div className="card black character" onClick={() => history.push(`/character/${name}`)}>
+
             <div>
                 <img alt={name} src={image} />
             </div>
@@ -19,4 +19,4 @@ function Character( {character} ) {
     );
 }
 
-export default Character; 
+export default Char; 

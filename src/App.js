@@ -3,15 +3,17 @@ import  { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar  from './Components/Navigation';
 import './styles/App.css';
 import { Character_API } from './api/api';
-import Nobody from './Components/Nobody';
-import characterDetails from './pages/character';
+import Char from './Components/Character'
+import CharacterDetails from './pages/character';
+import Nobody from '../Components/Nobody/index';
+
 
 function App() {
   return (
     <Router>
       <Navbar/>
       <Switch>
-        <Route path="/character/:id" component={characterDetails} />
+        <Route path="/character/:id" component={CharacterDetails} />
         <Route path="/location" component={Location} />
         <Route path="/episode" component={Episode} />
         <Route path="/" component={Home} />
@@ -51,20 +53,16 @@ function Home(props) {
         {characters.map(character => {
           return(
             <div className="col s12 m4 l3" key={character.id}>
-              <Character key={character.id} character={character}/>
+              <Char key={character.id} character={character}/>
             </div>
           )
         })}
       </div>
-    </div>
+    </div> 
   );
 }
 
-function Character() {
-  return (
-    <h2>Character description</h2>
-  );
-}
+
 
 function Location() {
   return(
