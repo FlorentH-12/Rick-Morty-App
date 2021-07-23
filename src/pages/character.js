@@ -7,13 +7,13 @@ import Nobody from '../Components/Nobody/index';
 function CharacterDetails({match}){
 
     let {id} = match.params;
-    let [charDetails, setCharacterDetails] = useState(null);
+    let [charDetails, setCharDetails] = useState(null);
 
     useEffect(() => {
         try {        
             fetch(`${Character_API}/${id}`)
                 .then(res => res.json())
-                .then(res => setCharacterDetails(res))
+                .then(res => setCharDetails(res))
                 .catch(err => console.log(err))
         }catch(e){
             console.log(e)
@@ -24,13 +24,13 @@ function CharacterDetails({match}){
         return <Nobody/>
     }
 
-    let  {image, name, status, location, episode} = charDetails;
+    let  {image, name, status, location, episode, gender} = charDetails;
 
     return (
         <div className="container">
             <br/>
             <Link to="/">Back</Link>
-            <h2>{id}</h2>
+            <h2>{name}</h2>
             <br/>
             <div className='charDetails'>
                 <div>
@@ -38,10 +38,11 @@ function CharacterDetails({match}){
                 </div>
                 <div>
                     <ul className="charContainer">
-                        <li className="charDesc"><strong>Name: </strong>{id}</li>
+                        <li className="charDesc"><strong>Name: </strong>{name}</li>
+                        <li className="charDesc"><strong>Gender: </strong>{gender}</li>
                         <li className="charDesc"><strong>Status: </strong>{status}</li>
-                        <li className="charDesc"><strong>Location: </strong>{location}</li>
-                        <li className="charDesc"><strong>Episode: </strong>{episode}</li>
+                        <li className="charDesc"><strong>Location: </strong><Link to={`/locations/${location.url.split('/').pop()}`}>{location.name}</Link></li>
+                        <li className="charDesc"><strong>Episode: </strong><Link to={`/episodes/${episode.url.split('/').pop()}`}>{episode}</Link></li>
                     </ul>
                 </div>
             </div>

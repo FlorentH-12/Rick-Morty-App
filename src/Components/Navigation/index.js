@@ -9,10 +9,10 @@ function Navbar() {
             <NavLink exact to="/">Home</NavLink>
           </li> 
           <li className="yellow">
-            <NavLink to="/location">Location</NavLink>
+            <NavLink to="/locations">Locations</NavLink>
           </li>
           <li className="yellow">
-            <NavLink to="/episode">Episode</NavLink>
+            <NavLink to="/episodes">Episodes</NavLink>
           </li>
         </ul>
       </nav>

@@ -3,9 +3,14 @@ import  { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar  from './Components/Navigation';
 import './styles/App.css';
 import { Character_API } from './api/api';
-import Char from './Components/Character'
+import Char from './Components/Character';
+import Nobody from './Components/Nobody/index';
 import CharacterDetails from './pages/character';
-import Nobody from '../Components/Nobody/index';
+import Locations from './pages/locations'
+import LocationDetails from './pages/LocationDetails'
+import Episodes from './pages/episodes';
+import EpisodeDetails from './pages/episodeDetails';
+
 
 
 function App() {
@@ -14,8 +19,10 @@ function App() {
       <Navbar/>
       <Switch>
         <Route path="/character/:id" component={CharacterDetails} />
-        <Route path="/location" component={Location} />
-        <Route path="/episode" component={Episode} />
+        <Route path="/locations/:id" component={LocationDetails} />
+        <Route path="/locations" component={Locations} />
+        <Route path="/episodes/:id" component={EpisodeDetails} />
+        <Route path="/episodes" component={Episodes} />
         <Route path="/" component={Home} />
       </Switch>
     </Router>
@@ -63,16 +70,4 @@ function Home(props) {
 }
 
 
-
-function Location() {
-  return(
-    <h2>Location</h2>
-  );
-}
-
-function Episode() {
-  return(
-    <h2>Episode</h2>
-  );
-}
 export default App;
