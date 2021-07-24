@@ -27,13 +27,13 @@ function Locations(props) {
 
 
     return (
-        <div className='container'>
-            <h2>Locations</h2>
+        <div class="container">
+            <h2 className="titlePage">Locations</h2>
             <br/>
-            <div className="row">
+            <div class="row row-cols-1 row-cols-md-4 g-4 ">
                 {locations.map(location => {
                     return(
-                        <div className="col s12 m6 l4" key={location.id}>
+                        <div key={location.id}>
                             <Location location={location}/>
                         </div>
                     )

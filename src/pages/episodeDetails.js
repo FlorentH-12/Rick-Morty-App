@@ -36,22 +36,25 @@ function EpsiodeDetails({match, history}) {
     let {name, episode} = episodeDetails
 
     return (
-        <div className="container">
+        <div class="container">
             <br/>
             <Link to="/episodes">Back</Link>
-            <h2>{name}</h2>
-            <br/>
-            <ul className="collection">
-                <li className="collection-item"><strong>Epsiode: </strong>{episode}</li>
-            </ul>
-            <br/>
+            <div class="card">
+                <h2 class="card-header">{name}</h2>
+                <br/>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Episode: </strong>{episode}</li>
+                </ul>
+                <br/>
+            </div>
+
             <h4>Characters</h4>
-            <div className="row">
+            <div class="row row-cols-1 row-cols-md-4 g-4 ">
                 {characters && Array.isArray(characters) && characters.map(({id, name, image}) => {
                     return (
-                        <div className="col s2 avatar" key={id} onClick={() => history.push(`/charaters/${id}`)}>
-                            <img alt={name} src={image}/>
-                            <div>{name}</div>
+                        <div key={id} onClick={() => history.push(`/home/${id}`)}>
+                            <img class="card-img-top" alt={name} src={image}/>
+                            <strong class="card text-center">{name}</strong>
                         </div>
                     )
                 })}

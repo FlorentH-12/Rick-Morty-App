@@ -8,17 +8,19 @@ function Location({location}) {
     let  {url} = useRouteMatch();
     
     return(
-        <div className="card black location" onClick={() => history.push(`${url}/${id}`)}>
-            <div className="card-content">
-                <h4>{name}</h4>
-                <br/>
-                <ul className="collection">
-                    <li className="collection-item"><strong>Dimension: </strong>{dimension}</li>
-                    <li className="collection-item"><strong>Type: </strong>{type}</li>
-                    <li className="collection-item"><strong>Residents: </strong>{residents.length}</li>
-                </ul>
-            </div>
+        <div class="card">
+            <div onClick={() => history.push(`${url}/${id}`)}>
+                <div>
+                    <h4 class="bg-success" >{name}</h4>
+                    <br/>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Dimension: </strong>{dimension}</li>
+                        <li class="list-group-item"><strong>Type: </strong>{type}</li>
+                        <li class="list-group-item"><strong>Residents: </strong>{residents.length}</li>
+                    </ul>
+                </div>
 
+            </div>
         </div>
     );
 }

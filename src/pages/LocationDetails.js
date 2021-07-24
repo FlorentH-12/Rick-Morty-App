@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Location_API } from '../api/api';
 import Nobody from '../Components/Nobody/index';
 
-
 function LocationDetails({match, history}) {
 
     let {id} = match.params
@@ -34,28 +33,35 @@ function LocationDetails({match, history}) {
 
     let {name, type, dimension} = locationDetails
     return (
-        <div>
+        <div class="container ">
             <br/>
             <Link to="/locations">Back</Link>
-            <h2>{name}</h2>
-            <br/>
-            <ul className="collection">
-                <li className="collection-item"><strong>Dimension: </strong> {dimension}</li>
-                <li className="collection-item"><strong>type: </strong> {type}</li>
-            </ul>
-            <br/>
-            <h4>Charaters</h4>
-            <br/>
-            <div className="row">
-            {residents && Array.isArray(residents) && residents.map(({ id, name, image}) => {
-                return (
-                    <div className="col s2 avatar" key = {id} onClick={() => history.push(`/charaters/${id}`)}>
-                        <img alt ={name} src={image}/>
-                        <div>{name}</div>
+            <div class="card">
+                <h2 class="card-header">{name}</h2>
+                <br/>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Dimension: </strong> {dimension}</li>
+                    <li class="list-group-item"><strong>type: </strong> {type}</li>
+                </ul>
+                <br/>
+           </div>
+           <div class="container "> 
+                <h4>Characters</h4>
+                <br/>
+                <div >
+                    <div class="row row-cols-1 row-cols-md-4 g-4 ">
+                    {residents && Array.isArray(residents) && residents.map(({ id, name, image}) => {
+                        return (
+                            <div key = {id} onClick={() => history.push(`/home/${id}`)}>
+                                <img class="card-img-top" alt ={name} src={image}/>
+                                <strong class="card text-center">{name}</strong>
+                            </div>
+                        )
+                    })}
+                        
                     </div>
-                )
-            })}
-                
+
+                </div>
             </div>
         </div>
     )

@@ -7,14 +7,16 @@ function Episode ({episode}) {
     let history = useHistory();
     let {url} = useRouteMatch();
     return (
-        <div className="card black" onClick={() => history.push(`${url}/${id}`)}>
-            <h4>{name}</h4>
-            <ul>
-                <li><strong>Episode: </strong>{episode.episode}</li>
-                <li><strong>Charaters: </strong>{characters.length}</li>
+        <div class="card">
+            <div onClick={() => history.push(`${url}/${id}`)}>
+                <h4 class="bg-success" >{name}</h4>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Episode: </strong>{episode.episode}</li>
+                    <li class="list-group-item"><strong>Charaters: </strong>{characters.length}</li>
+                </ul>
+                <div></div>
+            </div>
 
-            </ul>
-            <div></div>
         </div>
     );
 }

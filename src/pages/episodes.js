@@ -25,13 +25,13 @@ function Episodes (props) {
 
 
     return (
-        <div className="container">
-            <h2>Episodes of Rick and Morty</h2>
+        <div class="container">
+            <h2 className="titlePage" >Episodes of Rick and Morty</h2>
             <br/>
-            <div className="row">
+            <div class="row row-cols-1 row-cols-md-4 g-4 ">
                 {episodes.map(episode => {
                     return(
-                        <div className= "col s12 m6 l4"key={episode.id} >
+                        <div key={episode.id} >
                             <Episode episode={episode}/>
                         </div>
                     )
