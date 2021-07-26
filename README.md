@@ -2,7 +2,7 @@
         
 ![Capture](https://user-images.githubusercontent.com/81359715/127032369-38edb898-6dac-40f5-bb1d-e777d61d1bff.JPG)
 
-Hello, people of earth!
+Hello, people of Earth!
 
 Welcome to the Rick & Morthy website. This app will allow you to see information about your favorite characters from the Rick & Morty. 
 
