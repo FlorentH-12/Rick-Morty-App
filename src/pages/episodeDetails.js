@@ -40,7 +40,7 @@ function EpsiodeDetails({match, history}) {
         <div className='App'>
             <div class="container">
                 <br/>
-                <Link className='back' to="/episodes">Back</Link>
+                <Link style={{color: "#7CD77C", fontFamily:'impact'}} to="/episodes">Back</Link>
                 <br/>
                 <br/>
                 <div class="card" >
@@ -51,7 +51,7 @@ function EpsiodeDetails({match, history}) {
                 </div>
                 <br/>
 
-                <h4 style={{color: "#7CD77C", fontSize:'250%'}}>Characters</h4>
+                <h4 className="titlePage" style={{color: "#7CD77C", fontSize:'250%'}}>Characters</h4>
                 <br/>
                 <div class="row row-cols-1 row-cols-md-4 g-4 " >
                     {characters && Array.isArray(characters) && characters.map(({id, name, image}) => {

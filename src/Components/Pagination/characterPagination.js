@@ -38,7 +38,7 @@ const Pagination = ({ setCharacters, setIsLoading }) => {
     <div >
       {
         info.prev ? (
-          <button type="button" class="btn btn-outline-success" style={{backgroundColor: "#D3E8D3"}} type="button" onClick={ () => fetchCharacters(info.prev) }>
+          <button type="button" class="btn btn-outline-success" style={{backgroundColor: "#D3E8D3", marginRight:'30px'}} type="button" onClick={ () => fetchCharacters(info.prev) }>
             Prev.
           </button>
         ) : (

@@ -48,7 +48,7 @@ const EpisodePagination = ({ setEpisodes, setIsLoading }) => {
 
       {
         info.next ? (
-          <button type="button" class="btn btn-outline-success" style={{backgroundColor: "#D3E8D3"}}  onClick={ () => fetchEpisode(info.next) }>
+          <button type="button" class="btn btn-outline-success" style={{backgroundColor: "#D3E8D3", marginRight:'30px', marginLeft:'30px'}}  onClick={ () => fetchEpisode(info.next) }>
             Next
           </button>
         ) : (

@@ -29,21 +29,17 @@ function Filter() {
         });
 
         const handleFilter = (filterData) => {
-        if (filterData.key === "searchBox") setNameFilter(filterData.value);
-        else if (filterData.key === "status") setStatusFilter(filterData.value);
+        if (filterData.key === "status") setStatusFilter(filterData.value);
         else if (filterData.key === "gender") setGenderFilter(filterData.value);
         };
 
         const renderUnfilteredList = () => {
-        setNameFilter("");
         setStatusFilter("all");
         setGenderFilter("all");
         };
 
         const filteredChars = chars
-        .filter((char) => {
-            return char.name.toUpperCase().includes(nameFilter.toUpperCase());
-        })
+
         .filter((char) => {
             if (statusFilter === "all") return char;
             else return char.status === statusFilter;
@@ -69,21 +65,10 @@ function Filter() {
             });
         };
 
-        const handleFormSubmit = (event) => {
-            event.preventDefault();
-        };
+       
 
         return (
-            <form className="form" onSubmit={handleFormSubmit}>
-            <input
-                type="text"
-                name="searchBox"
-                id="searchBox"
-                className="searchBox"
-                placeholder="Type a character's name"
-                onChange={handleInputChange}
-                autoFocus
-            />
+
             <div className="selectWrapper">
                 <label className="label" htmlFor="status">
                 Status
@@ -114,7 +99,6 @@ function Filter() {
                 <option value="unknown">Unknown</option>
                 </select>
             </div>
-            </form>
         );
         };
 }

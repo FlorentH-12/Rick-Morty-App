@@ -34,25 +34,25 @@ function CharacterDetails({match}){
         <div className='App'>
             <div class="container" >
                 <br/>
-                <Link to="/home" >Back</Link>
+                <Link  style={{color: "#7CD77C", fontFamily:'impact'}}  to="/home" >Back</Link>
                 <br/>
                 <br/>
-                <div class="card"  >
+                <div class="card" style={{backgroundColor: "#D3E8D3"}}  >
                     <h2 class="card-title" style={{backgroundColor: "#D3E8D3"}}>{name}</h2>
-                    <div>
+                    <div >
                         <div>
                             <img alt={name} src={image}/>
                         </div>
                         <div>
-                            <ul  class="list-group list-group-flush">
-                                <li class="card-text list-group-item"><strong>Name: </strong>{name}</li>
-                                <li class="card-text list-group-item"><strong>Gender: </strong>{gender}</li>
-                                <li class="card-text list-group-item"><strong>Status: </strong>{status}</li>
-                                <li class="card-text list-group-item card-link"><strong>Location: </strong><Link to={`/locations/${location.url.split('/').pop()}`}>{location.name}</Link></li>
+                            <ul  class="list-group list-group-flush" >
+                                <li style={{backgroundColor: "#D3E8D3"}} class="card-text list-group-item"><strong>Name: </strong>{name}</li>
+                                <li style={{backgroundColor: "#D3E8D3"}} class="card-text list-group-item"><strong>Gender: </strong>{gender}</li>
+                                <li style={{backgroundColor: "#D3E8D3"}} class="card-text list-group-item"><strong>Status: </strong>{status}</li>
+                                <li style={{backgroundColor: "#D3E8D3"}} class="card-text list-group-item card-link"><strong>Location: </strong><Link to={`/locations/${location.url.split('/').pop()}`}>{location.name}</Link></li>
                                 {episode.map(episode => {
                                     return (
-                                        <div class="card-text list-group-item">
-                                            <li class="card-text list-group-item card-link"><strong>Episode: </strong><Link to={`/episodes/${episode.split('/').pop()}`}>{episode.split('/').pop()}</Link></li>
+                                        <div style={{backgroundColor: "#D3E8D3"}} class="card-text list-group-item">
+                                            <li style={{backgroundColor: "#D3E8D3"}} class="card-text list-group-item card-link"><strong>Episode: </strong><Link to={`/episodes/${episode.split('/').pop()}`}>{episode.split('/').pop()}</Link></li>
                                         </div>
                                     )
                                     })}

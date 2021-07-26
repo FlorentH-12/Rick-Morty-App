@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Location_API } from '../api/api';
 import Nobody from '../Components/Nobody/index';
-
+import Footer from '../Components/Footer';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function LocationDetails({match, history}) {
 
@@ -37,7 +38,7 @@ function LocationDetails({match, history}) {
         <div className='App' >
             <div class="container ">
                 <br/>
-                <Link to="/locations">Back</Link>
+                <Link style={{color: "#7CD77C", fontFamily:'impact'}} to="/locations">Back</Link>
                 <br/>
                 <br/>
                 <div class="card" >
@@ -49,7 +50,7 @@ function LocationDetails({match, history}) {
             </div>
             <div class="container "> 
             <br/>
-                    <h4 style={{color: "#7CD77C", fontSize:'250%'}}>Characters</h4>
+                    <h4 className="titlePage" style={{color: "#7CD77C", fontSize:'250%'}}>Characters</h4>
                     <br/>
                     <div >
                         <div class="row row-cols-1 row-cols-md-4 g-4 ">
@@ -67,6 +68,7 @@ function LocationDetails({match, history}) {
                     </div>
                 </div>
             </div>
+            <Footer/>
         </div>
     )
 }
