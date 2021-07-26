@@ -21,7 +21,7 @@ git clone https://github.com/FlorentH-12/Rick-Morty-App.git
 
 cd rick-and-morty-app/
 
-Installing / Getting started
+Getting started
 
 This project was developed using React, React-Router, Bootstrap and Axios. Run the following commands in your terminal in order to get it up and running.
 
