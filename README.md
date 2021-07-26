@@ -4,7 +4,7 @@
 
 Hello, people of Earth!
 
-Welcome to the Rick & Morthy website. This app will allow you to see information about your favorite characters from the Rick & Morty. 
+Welcome to the Rick & Morthy website. This app will allow you to see information about your favorite characters from Rick & Morty. 
 
 
 Before looking at the code and the App, you can discover all the journey preparation for this project
@@ -13,7 +13,7 @@ Trello: https://trello.com/b/4Q7eUh3f/mod%C3%A8le-kanban
 
 Miro : https://miro.com/app/board/o9J_l6X-hCg=/
 
- ###Developing
+Developing
 
 Clone this repo if you wish to work with the code:
 
