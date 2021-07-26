@@ -13,6 +13,7 @@ function Episode ({episode}) {
         <div class="card" style={{backgroundColor: "#D3E8D3"}}>
             <div onClick={() => history.push(`${url}/${id}`)}>
                 <h4 class="card-header" >{name}</h4>
+                <img src="./styles/ciel-etoile.jpg" alt="Mountain"></img>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item"><strong>Episode: </strong>{episode.episode}</li>
                     <li class="list-group-item"><strong>Charaters: </strong>{characters.length}</li>
