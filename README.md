@@ -5,7 +5,7 @@
 Hello, people of earth!
 
 Welcome to the Rick & Morthy website. This app will allow you to see information about your favorite characters from the Rick & Morty. 
-Click here to start using the app!
+
 
 Before looking at the code and the App, you can discover all the journey preparation for this project
 
