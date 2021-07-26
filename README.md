@@ -34,3 +34,4 @@ Features
 To get all the information to construct the app, Rick & Morty API was used.
 You may clic on a character to see its description.
 Use the next and previous buttons to navigate between the characters.
+"# rickandmorty.github.io" 
