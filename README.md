@@ -14,6 +14,7 @@ Trello: https://trello.com/b/4Q7eUh3f/mod%C3%A8le-kanban
 Miro : https://miro.com/app/board/o9J_l6X-hCg=/
 
 Developing
+
 Clone this repo if you wish to work with the code:
 
 git clone https://github.com/FlorentH-12/Rick-Morty-App.git
