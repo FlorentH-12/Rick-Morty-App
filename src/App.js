@@ -14,6 +14,7 @@ import LocationDetails from './pages/locationDetails'
 import Episodes from './pages/episodes';
 import EpisodeDetails from './pages/episodeDetails';
 import Nobody from './Components/Nobody/index';
+
 //import Next from './Pagination/next';
 // import Previous from './Components/Pagination/previous';
 
@@ -60,23 +61,27 @@ function Characters(props) {
 
 
   return (
-    <div class="container ">
-      <h2 className="titlePage">Characters</h2>
-      <br/>
-      <div class="row row-cols-1 row-cols-md-4 g-4 ">
-        {characters.map(character => {
-          return (
-            <div key={character.id}>
-              <Character key={character.id} character={character}/>
-            </div>
-          )
-        })}
+    <div>
+      <div class="container ">
+        <h2 className="titlePage">Characters</h2>
+        <br/>
+        <div class="row row-cols-1 row-cols-md-4 g-4 ">
+          {characters.map(character => {
+            return (
+              <div key={character.id}>
+                <Character key={character.id} character={character}/>
+              </div>
+            )
+          })}
+        </div>
+        <li>
+          {/* <ul><Previous/></ul>
+          <ul><Link to={next}>Next</Link></ul> */}
+        </li> 
       </div>
-      <li>
-        {/* <ul><Previous/></ul>
-        <ul><Link to={next}>Next</Link></ul> */}
-      </li> 
+
     </div>
+
       );
 }
 

@@ -48,7 +48,7 @@ function CharacterDetails({match}){
                             {episode.map(episode => {
                                 return (
                                     <div class="card-text list-group-item">
-                                        <li class="card-text list-group-item card-link"><strong>Episode: </strong><Link to={`/episodes/${episode.split('/').pop()}`}>{episode}</Link></li>
+                                        <li class="card-text list-group-item card-link"><strong>Episode: </strong><Link to={`/episodes/${episode.split('/').pop()}`}>{episode.split('/').pop()}</Link></li>
                                     </div>
                                 )
                                 })}
