@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import {Location_API} from '../api/api';
 import Nobody from '../Components/Nobody/index';
 import Location from '../Components/Location/index';
+import Footer from "../Components/Footer";
+import '../styles/App.css';
+
 
 
 function Locations(props) {
@@ -27,18 +30,22 @@ function Locations(props) {
 
 
     return (
-        <div class="container">
-            <h2 className="titlePage">Locations</h2>
-            <br/>
-            <div class="row row-cols-1 row-cols-md-4 g-4 ">
-                {locations.map(location => {
-                    return(
-                        <div key={location.id}>
-                            <Location location={location}/>
-                        </div>
-                    )
-                })}
+        <div className='App'>
+            <div class="container">
+                <h2 className="titlePage" style={{color: "#7CD77C"}}>Locations</h2>
+                <br/>
+                <div class="row row-cols-1 row-cols-md-4 g-4 ">
+                    {locations.map(location => {
+                        return(
+                            <div key={location.id}>
+                                <Location location={location}/>
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
+            <br/>
+        <Footer/>
         </div>
     );
 }

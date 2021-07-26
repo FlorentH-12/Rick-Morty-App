@@ -8,7 +8,7 @@ function Character( {character} ) {
 
     
     return (
-        <div class="card text-center" >
+        <div class="card text-center" style={{backgroundColor: "#D3E8D3"}}>
             <div class="card-body" onClick={() => history.push(`home/${id}`)}>
                 <div>
                     <img class="card-img-top" alt={name} src={image} />

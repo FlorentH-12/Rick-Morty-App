@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import  { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './styles/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-
 import { Character_API } from './api/api';
 
 import Navbar  from './Components/Navigation';
@@ -14,7 +12,8 @@ import LocationDetails from './pages/locationDetails'
 import Episodes from './pages/episodes';
 import EpisodeDetails from './pages/episodeDetails';
 import Nobody from './Components/Nobody/index';
-
+import Footer from './Components/Footer';
+import Pagination from "./Components/Pagination/characterPagination";
 //import Next from './Pagination/next';
 // import Previous from './Components/Pagination/previous';
 
@@ -39,6 +38,7 @@ function App() {
 function Characters(props) {
 
   let [characters, setCharacters] = useState();
+  let [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     try{
@@ -59,13 +59,21 @@ function Characters(props) {
     return <Nobody/>
 }
 
+//------------------------------------------------------------------------------------//
 
+
+
+  
   return (
-    <div>
+    <div className='App'>
       <div class="container ">
-        <h2 className="titlePage">Characters</h2>
+        <h2 className="titlePage" style={{color: "#7CD77C"}}>Characters</h2>
         <br/>
-        <div class="row row-cols-1 row-cols-md-4 g-4 ">
+        <div style={{textAlign: 'center'}} >
+        <Pagination  setCharacters={setCharacters} setIsLoading={setIsLoading} />
+        </div>
+        <br/>
+        <div class="row row-cols-1 row-cols-md-4 g-4 " >
           {characters.map(character => {
             return (
               <div key={character.id}>
@@ -74,12 +82,13 @@ function Characters(props) {
             )
           })}
         </div>
-        <li>
-          {/* <ul><Previous/></ul>
-          <ul><Link to={next}>Next</Link></ul> */}
-        </li> 
+        <br/>
+        <div style={{textAlign: 'center'}} >
+        <Pagination  setCharacters={setCharacters} setIsLoading={setIsLoading} />
+        </div>
       </div>
-
+      <br/>
+      <Footer/>
     </div>
 
       );

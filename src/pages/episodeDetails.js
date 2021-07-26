@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Episode_API } from '../api/api';
 import Nobody from '../Components/Nobody/index';
 import { Link } from 'react-router-dom';
+import Footer from '../Components/Footer';
 
 
 
@@ -36,30 +37,35 @@ function EpsiodeDetails({match, history}) {
     let {name, episode} = episodeDetails
 
     return (
-        <div class="container">
-            <br/>
-            <Link to="/episodes">Back</Link>
-            <div class="card">
-                <h2 class="card-header">{name}</h2>
+        <div className='App'>
+            <div class="container">
                 <br/>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><strong>Episode: </strong>{episode}</li>
-                </ul>
+                <Link className='back' to="/episodes">Back</Link>
                 <br/>
-            </div>
+                <br/>
+                <div class="card" >
+                    <h2 class="card-header"style={{backgroundColor: "#D3E8D3"}}>{name}</h2>
+                    <ul class="list-group list-group-flush" >
+                        <li class="list-group-item" ><strong>Episode: </strong>{episode}</li>
+                    </ul>
+                </div>
+                <br/>
 
-            <h4>Characters</h4>
-            <div class="row row-cols-1 row-cols-md-4 g-4 ">
-                {characters && Array.isArray(characters) && characters.map(({id, name, image}) => {
-                    return (
-                        <div key={id} onClick={() => history.push(`/home/${id}`)}>
-                            <img class="card-img-top" alt={name} src={image}/>
-                            <strong class="card text-center">{name}</strong>
-                        </div>
-                    )
-                })}
+                <h4 style={{color: "#7CD77C", fontSize:'250%'}}>Characters</h4>
+                <br/>
+                <div class="row row-cols-1 row-cols-md-4 g-4 " >
+                    {characters && Array.isArray(characters) && characters.map(({id, name, image}) => {
+                        return (
+                            <div key={id} onClick={() => history.push(`/home/${id}`)} >
+                                <img class="card-img-top" alt={name} src={image}/>
+                                <strong class="card text-center" style={{backgroundColor: "#D3E8D3"}}>{name}</strong>
+                            </div>
+                        )
+                    })}
 
+                </div>
             </div>
+            <Footer/>
         </div>
     )
 }

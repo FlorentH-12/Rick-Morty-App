@@ -8,11 +8,10 @@ function Location({location}) {
     let  {url} = useRouteMatch();
     
     return(
-        <div class="card">
+        <div class="card"  style={{backgroundColor: "#D3E8D3"}} >
             <div onClick={() => history.push(`${url}/${id}`)}>
                 <div>
-                    <h4 class="bg-success" >{name}</h4>
-                    <br/>
+                    <h4 class="card-header">{name}</h4>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><strong>Dimension: </strong>{dimension}</li>
                         <li class="list-group-item"><strong>Type: </strong>{type}</li>

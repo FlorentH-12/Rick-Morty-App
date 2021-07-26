@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Location_API } from '../api/api';
 import Nobody from '../Components/Nobody/index';
 
+
 function LocationDetails({match, history}) {
 
     let {id} = match.params
@@ -33,34 +34,37 @@ function LocationDetails({match, history}) {
 
     let {name, type, dimension} = locationDetails
     return (
-        <div class="container ">
+        <div className='App' >
+            <div class="container ">
+                <br/>
+                <Link to="/locations">Back</Link>
+                <br/>
+                <br/>
+                <div class="card" >
+                    <h2 class="card-header" style={{backgroundColor: "#D3E8D3"}}>{name}</h2>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" ><strong>Dimension: </strong> {dimension}</li>
+                        <li class="list-group-item" ><strong>type: </strong> {type}</li>
+                    </ul>
+            </div>
+            <div class="container "> 
             <br/>
-            <Link to="/locations">Back</Link>
-            <div class="card">
-                <h2 class="card-header">{name}</h2>
-                <br/>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><strong>Dimension: </strong> {dimension}</li>
-                    <li class="list-group-item"><strong>type: </strong> {type}</li>
-                </ul>
-                <br/>
-           </div>
-           <div class="container "> 
-                <h4>Characters</h4>
-                <br/>
-                <div >
-                    <div class="row row-cols-1 row-cols-md-4 g-4 ">
-                    {residents && Array.isArray(residents) && residents.map(({ id, name, image}) => {
-                        return (
-                            <div key = {id} onClick={() => history.push(`/home/${id}`)}>
-                                <img class="card-img-top" alt ={name} src={image}/>
-                                <strong class="card text-center">{name}</strong>
-                            </div>
-                        )
-                    })}
-                        
-                    </div>
+                    <h4 style={{color: "#7CD77C", fontSize:'250%'}}>Characters</h4>
+                    <br/>
+                    <div >
+                        <div class="row row-cols-1 row-cols-md-4 g-4 ">
+                        {residents && Array.isArray(residents) && residents.map(({ id, name, image}) => {
+                            return (
+                                <div key = {id} onClick={() => history.push(`/home/${id}`)}>
+                                    <img class="card-img-top" alt ={name} src={image}/>
+                                    <strong style={{backgroundColor: "#D3E8D3"}} class="card text-center">{name}</strong>
+                                </div>
+                            )
+                        })}
+                            
+                        </div>
 
+                    </div>
                 </div>
             </div>
         </div>
