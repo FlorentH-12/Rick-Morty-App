@@ -6,6 +6,9 @@ import Footer from '../Components/Footer';
 
 
 
+//------------------------------------- Characters List per Episode  -----------------------------------------------//
+
+
 function EpsiodeDetails({match, history}) {
 
     let {id} = match.params;

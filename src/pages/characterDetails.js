@@ -7,6 +7,8 @@ import '../styles/App.css';
 import background from "../styles/rickandmorty-background.gif"
 
 
+//------------------------------------- Characters all details -----------------------------------------------//
+
 function CharacterDetails({match}){
 
     // Character hook for character data

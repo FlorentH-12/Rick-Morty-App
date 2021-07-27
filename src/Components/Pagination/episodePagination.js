@@ -3,6 +3,11 @@ import { Episode_API } from "../../api/api";
 import axios from "axios";
 import "../../styles/App.css";
 
+
+//------------------------------------- Pagination of episodes list -----------------------------------------------//
+
+
+
 const EpisodePagination = ({ setEpisodes, setIsLoading }) => {
   const [info, setInfo] = useState(1)
 

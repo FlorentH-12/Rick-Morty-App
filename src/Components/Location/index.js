@@ -1,6 +1,12 @@
 import React from "react";
 import { useHistory, useRouteMatch} from 'react-router-dom';
 
+
+
+//------------------------------------- Location Card for the Location List -----------------------------------------------//
+
+
+
 function Location({location}) {
 
     let {name, dimension, residents, type, id} = location; 

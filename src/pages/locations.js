@@ -6,6 +6,8 @@ import Footer from "../Components/Footer";
 import '../styles/App.css';
 
 
+//------------------------------------- Locations List -----------------------------------------------//
+
 
 function Locations(props) {
 

@@ -1,6 +1,10 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom'
 
+
+//------------------------------------- Navigation Bar -----------------------------------------------//
+
+
 function Navbar() {
     return(
       <nav class="navbar navbar-expand-lg navbar-light" style={{backgroundColor: "#7CD77C"}}>

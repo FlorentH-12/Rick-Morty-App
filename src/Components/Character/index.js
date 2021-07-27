@@ -1,6 +1,13 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
+
+
+//------------------------------------- Characters Card for Characters List -----------------------------------------------//
+
+
+
+
 function Character( {character} ) {
 
     let {id, name, image} = character;

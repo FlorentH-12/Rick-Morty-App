@@ -3,6 +3,9 @@ import {useHistory, useRouteMatch} from 'react-router-dom'
 import '../../styles/App.css';
 
 
+//------------------------------------- Episode Card for the Episodes List -----------------------------------------------//
+
+
 
 function Episode ({episode}) {
 

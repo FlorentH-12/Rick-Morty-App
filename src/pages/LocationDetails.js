@@ -5,6 +5,9 @@ import Nobody from '../Components/Nobody/index';
 import Footer from '../Components/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
+//------------------------------------- Characters List per location  -----------------------------------------------//
+
 function LocationDetails({match, history}) {
 
     let {id} = match.params
@@ -32,6 +35,8 @@ function LocationDetails({match, history}) {
     if(!locationDetails){
         return <Nobody/>
     }
+
+//------------------------------------- Characters per location List -----------------------------------------------//
 
     let {name, type, dimension} = locationDetails
     return (

@@ -1,12 +1,10 @@
 import { React, useEffect, useState } from "react";
-import { Switch, Route } from "react-router-dom";
 import {Character_API} from "../../api/api";
 import Filter from "./index";
 import CharacterDetails from "../../pages/characterDetails";
 
 function CharFilter() {
   const [chars, setChars] = useState([]);
-  const [nameFilter, setNameFilter] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
   const [genderFilter, setGenderFilter] = useState("all");
 
@@ -43,9 +41,6 @@ function CharFilter() {
 
   const filteredChars = chars
     .filter((char) => {
-      return char.name.toUpperCase().includes(nameFilter.toUpperCase());
-    })
-    .filter((char) => {
       if (statusFilter === "all") return char;
       else return char.status === statusFilter;
     })
@@ -65,12 +60,7 @@ function CharFilter() {
   return (
     <div className="App">
       <main>
-        <Switch>
-          <Route exact path="/">
             <Filter handleFilter={handleFilter} />
-          </Route>
-          <Route exact path="/char/:id" render={renderCharDetail} />
-        </Switch>
       </main>
     </div>
   );

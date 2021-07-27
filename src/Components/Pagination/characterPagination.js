@@ -5,6 +5,9 @@ import "../../styles/App.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
+
+//------------------------------------- pagination of characters list -----------------------------------------------//
+
 const Pagination = ({ setCharacters, setIsLoading }) => {
   const [info, setInfo] = useState(1)
 
