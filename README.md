@@ -19,15 +19,15 @@ Clone this repo if you wish to work with the code:
 
 git clone [Rick & Morty App](https://github.com/FlorentH-12/Rick-Morty-App.git)
 
-`<addr>` cd rick-and-morty-app
+`<cd rick-and-morty-app>` 
 
 ## Getting started
 
 This project was developed using React, React-Router, Bootstrap and Axios. Run the following commands in your terminal in order to get it up and running.
 
-`<addr>`npm install
+`<npm install>`
 
-`<addr>` npm start
+`<npm start>` 
 
 ## Features
 
