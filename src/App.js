@@ -14,9 +14,8 @@ import EpisodeDetails from './pages/episodeDetails';
 import Nobody from './Components/Nobody/index';
 import Footer from './Components/Footer';
 import Pagination from "./Components/Pagination/characterPagination";
-//import CharFilter from './Components/Filter/App';
-//import Next from './Pagination/next';
-// import Previous from './Components/Pagination/previous';
+import Filter from './Components/Filter/index';
+
 
 
 //------------------------------------- Navigation and Routes -----------------------------------------------//
@@ -63,9 +62,8 @@ function Characters(props) {
     return <Nobody/>
 }
 
+
 //------------------------------------- Return -----------------------------------------------//
-
-
 
   
   return (
@@ -73,8 +71,8 @@ function Characters(props) {
       <div class="container ">
         <h2 className="titlePage" style={{color: "#7CD77C"}}>Characters</h2>
         <br/>
-        <div style={{textAlign: 'center'}}>
-        {/* <CharFilter/> */}
+        <div style={{justifyContent:'center', display: 'flex', columns: 'row', marginLeft: "15px"}}>
+        {/* {<Filter/>} */}
         <Pagination  setCharacters={setCharacters} setIsLoading={setIsLoading} />
         </div>
         <br/>
@@ -82,7 +80,7 @@ function Characters(props) {
           {characters.map(character => {
             return (
               <div key={character.id}>
-                <Character key={character.id} character={character}/>
+                <Character key={character.id} character={character} />
               </div>
             )
           })}

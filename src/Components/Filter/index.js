@@ -12,8 +12,8 @@ function Filter (props) {
   
   
     return (
-        <div className="selectWrapper">
-          <label className="label" htmlFor="status">
+        <div>
+          <label style={{color: "#7CD77C", fontFamily: 'impact'}}>
             Status
           </label>
           <select
@@ -27,7 +27,7 @@ function Filter (props) {
             <option value="Dead">Dead</option>
             <option value="unknown">Unknown</option>
           </select>
-          <label className="label" htmlFor="gender">
+          <label style={{color: "#7CD77C", fontFamily: 'impact'}}>
             Gender
           </label>
           <select

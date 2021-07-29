@@ -1,16 +1,21 @@
 import { React, useEffect, useState } from "react";
-import {Character_API} from "../../api/api";
-import Filter from "./index";
-import CharacterDetails from "../../pages/characterDetails";
+import { Switch, Route } from "react-router-dom";
+import getDataFromAPI from "../services/getDataFromAPI";
+import Header from "./Header";
+import Filter from "./Filter";
+import CharacterList from "./CharacterList";
+import CharacterDetail from "./CharacterDetail";
+import Footer from "./Footer";
+import "../stylesheets/_App.scss";
 
-function CharFilter() {
+function App() {
   const [chars, setChars] = useState([]);
+  const [nameFilter, setNameFilter] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
   const [genderFilter, setGenderFilter] = useState("all");
 
   useEffect(() => {
-    fetch(Character_API)
-    .then((data) => {
+    getDataFromAPI().then((data) => {
       setChars(data);
     });
   }, []);
@@ -41,6 +46,9 @@ function CharFilter() {
 
   const filteredChars = chars
     .filter((char) => {
+      return char.name.toUpperCase().includes(nameFilter.toUpperCase());
+    })
+    .filter((char) => {
       if (statusFilter === "all") return char;
       else return char.status === statusFilter;
     })
@@ -54,17 +62,24 @@ function CharFilter() {
     const foundChar = chars.find((char) => {
       return char.id === charId;
     });
-    return <CharacterDetails char={foundChar} />;
+    return <CharacterDetail char={foundChar} />;
   };
 
   return (
     <div className="App">
+      <Header renderUnfilteredList={renderUnfilteredList} />
       <main>
+        <Switch>
+          <Route exact path="/">
             <Filter handleFilter={handleFilter} />
+            <CharacterList filteredChars={filteredChars} />
+          </Route>
+          <Route exact path="/char/:id" render={renderCharDetail} />
+        </Switch>
       </main>
+      <Footer />
     </div>
   );
 }
 
-export default CharFilter;
-
+export default App;
