@@ -1,85 +1,104 @@
-import { React, useEffect, useState } from "react";
-import { Switch, Route } from "react-router-dom";
-import getDataFromAPI from "../services/getDataFromAPI";
-import Header from "./Header";
-import Filter from "./Filter";
-import CharacterList from "./CharacterList";
-import CharacterDetail from "./CharacterDetail";
-import Footer from "./Footer";
-import "../stylesheets/_App.scss";
+import React, { useEffect, useState } from 'react';
+import  { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import './styles/App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Character_API } from './api/api';
 
+import Navbar  from './Components/Navigation';
+import Character from './Components/Character/index'
+import CharacterDetails from './pages/characterDetails';
+import Locations from './pages/locations'
+import LocationDetails from './pages/locationDetails'
+import Episodes from './pages/episodes';
+import EpisodeDetails from './pages/episodeDetails';
+import Nobody from './Components/Nobody/index';
+import Footer from './Components/Footer';
+import Pagination from "./Components/Pagination/characterPagination";
+//import CharFilter from './Components/Filter/App';
+//import Next from './Pagination/next';
+// import Previous from './Components/Pagination/previous';
+
+
+//------------------------------------- Navigation and Routes -----------------------------------------------//
 function App() {
-  const [chars, setChars] = useState([]);
-  const [nameFilter, setNameFilter] = useState("");
-  const [statusFilter, setStatusFilter] = useState("all");
-  const [genderFilter, setGenderFilter] = useState("all");
-
-  useEffect(() => {
-    getDataFromAPI().then((data) => {
-      setChars(data);
-    });
-  }, []);
-
-  chars.sort(function (a, b) {
-    const charA = a.name.toUpperCase();
-    const charB = b.name.toUpperCase();
-    if (charA < charB) {
-      return -1;
-    }
-    if (charA > charB) {
-      return 1;
-    }
-    return 0;
-  });
-
-  const handleFilter = (filterData) => {
-    if (filterData.key === "searchBox") setNameFilter(filterData.value);
-    else if (filterData.key === "status") setStatusFilter(filterData.value);
-    else if (filterData.key === "gender") setGenderFilter(filterData.value);
-  };
-
-  const renderUnfilteredList = () => {
-    setNameFilter("");
-    setStatusFilter("all");
-    setGenderFilter("all");
-  };
-
-  const filteredChars = chars
-    .filter((char) => {
-      return char.name.toUpperCase().includes(nameFilter.toUpperCase());
-    })
-    .filter((char) => {
-      if (statusFilter === "all") return char;
-      else return char.status === statusFilter;
-    })
-    .filter((char) => {
-      if (genderFilter === "all") return char;
-      else return char.gender === genderFilter;
-    });
-
-  const renderCharDetail = (props) => {
-    const charId = parseInt(props.match.params.id);
-    const foundChar = chars.find((char) => {
-      return char.id === charId;
-    });
-    return <CharacterDetail char={foundChar} />;
-  };
-
   return (
-    <div className="App">
-      <Header renderUnfilteredList={renderUnfilteredList} />
-      <main>
-        <Switch>
-          <Route exact path="/">
-            <Filter handleFilter={handleFilter} />
-            <CharacterList filteredChars={filteredChars} />
-          </Route>
-          <Route exact path="/char/:id" render={renderCharDetail} />
-        </Switch>
-      </main>
-      <Footer />
-    </div>
+    <Router>
+      <Navbar/>
+      <Switch>
+        <Route path="/home/:id" component={CharacterDetails} />
+        <Route path="/locations/:id" component={LocationDetails} />
+        <Route path="/locations" component={Locations} />
+        <Route path="/episodes/:id" component={EpisodeDetails} />
+        <Route path="/episodes" component={Episodes} />
+        <Route path="/home" component={Characters} />
+        <Route exact path="/" component={Characters} />
+      </Switch>
+    </Router>
   );
 }
 
+//------------------------------------- Characters List -----------------------------------------------//
+
+function Characters(props) {
+
+  let [characters, setCharacters] = useState();
+  let [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    try{
+      fetch(Character_API)
+        .then(res => res.json())
+        .then(({results}) => {
+          if(results && Array.isArray(results)){
+            setCharacters(results)
+          }
+        })
+        .then(err => console.log(err))
+    }catch(e){
+      console.log(e)
+    }
+  }, []);
+
+  if(!characters){
+    return <Nobody/>
+}
+
+//------------------------------------- Return -----------------------------------------------//
+
+
+
+  
+  return (
+    <div className='App'>
+      <div class="container ">
+        <h2 className="titlePage" style={{color: "#7CD77C"}}>Characters</h2>
+        <br/>
+        <div style={{textAlign: 'center'}}>
+        {/* <CharFilter/> */}
+        <Pagination  setCharacters={setCharacters} setIsLoading={setIsLoading} />
+        </div>
+        <br/>
+        <div class="row row-cols-1 row-cols-md-4 g-4 " >
+          {characters.map(character => {
+            return (
+              <div key={character.id}>
+                <Character key={character.id} character={character}/>
+              </div>
+            )
+          })}
+        </div>
+        <br/>
+        <div style={{textAlign: 'center'}} >
+        <Pagination  setCharacters={setCharacters} setIsLoading={setIsLoading} />
+        </div>
+      </div>
+      <br/>
+      <Footer/>
+    </div>
+
+      );
+}
+
+
 export default App;
+
